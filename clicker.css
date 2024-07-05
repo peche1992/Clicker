@@ -1,0 +1,48 @@
+body{
+    height: 100vh;
+    margin: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: grey;
+
+}
+
+#fondo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: blue;
+    width: 500px;
+    height: 500px;
+    background-image: url("fondo.jpg");
+}
+
+
+#puntuacion{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: red;
+    width: 80%;
+    height: 10%;
+    overflow: hidden;
+}
+
+#daño{
+    width: 80%;
+    height: 20%;
+    background-color: black;
+    padding: 0;
+    margin-right: 10%;
+}
+
+#boss{
+    height: 50%;
+    margin-top: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    lighting-color: aliceblue;
+    }
