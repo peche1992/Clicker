@@ -1,5 +1,15 @@
 const boss=document.getElementById("boss")
 const home=document.getElementsByClassName("returnhome")
+const viajeboss=document.getElementById("viaje-boss")
+
+//RECOGER LOS ZTIPE DE LOS DIVS
+let elementboss = document.getElementById("fondo-boss");
+let zIndexboss = window.getComputedStyle(elementboss).zIndex;
+
+let elementhome = document.getElementById("fondo-home");
+let zIndexhome = window.getComputedStyle(elementhome).zIndex;
+
+
 let barrainicial = 80;
 let puntuacion = parseInt(document.querySelector(".oro-texto").innerText,10);
 let multPuntuacion = parseInt(document.querySelector(".mult-puntos-texto").innerText,10);
@@ -17,6 +27,27 @@ const bossesEspeciales = ["bossesp1.png"]
 const bossesfinales = []
 let dañito= 20;
 listabossessinusar=[].concat(bosses);
+
+
+
+//HOME DEL BOSS
+home[0].addEventListener("click",function(){
+        zIndexboss= 0;
+        zIndexhome= 1;
+        elementboss.style.zIndex = zIndexboss;
+        elementhome.style.zIndex = zIndexhome;
+
+    }
+)
+
+viajeboss.addEventListener("click",function(){
+    zIndexboss= 1;
+    zIndexhome= 0;
+    elementboss.style.zIndex = zIndexboss;
+    elementhome.style.zIndex = zIndexhome;
+}
+)
+
 
 boss.addEventListener("click",function(){
 
