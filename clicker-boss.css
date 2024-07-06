@@ -1,134 +1,283 @@
-const boss=document.getElementById("boss")
-const home=document.getElementsByClassName("returnhome")
-const viajeboss=document.getElementById("viaje-boss")
+body{
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("fondobody.jpg");
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
 
-//RECOGER LOS ZTIPE DE LOS DIVS
-let elementboss = document.getElementById("fondo-boss");
-let zIndexboss = window.getComputedStyle(elementboss).zIndex;
-
-let elementhome = document.getElementById("fondo-home");
-let zIndexhome = window.getComputedStyle(elementhome).zIndex;
-
-
-let barrainicial = 80;
-let puntuacion = parseInt(document.querySelector(".oro-texto").innerText,10);
-let multPuntuacion = parseInt(document.querySelector(".mult-puntos-texto").innerText,10);
-
-let puntuacionOro=1;
-
-const bosses= ["final-boss.png",
-               "pngwing.com.png",
-                "pngwing.com (1).png",
-                "pngwing.com (2).png"
-]
-
-const bossesEspeciales = ["bossesp1.png"]
-
-const bossesfinales = []
-let dañito= 20;
-listabossessinusar=[].concat(bosses);
-
+#fondo-boss{
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 370px;
+    height: 687px;
+    background-image: url("fondo-boss.gif");
+    background-size: cover;
+    background-position: center;
+    border-radius: 5%;
+    z-index: 5;
+    position: absolute;
+    border: 5px solid gold;
+}
 
 
-//HOME DEL BOSS
-home[0].addEventListener("click",function(){
-        zIndexboss= 0;
-        zIndexhome= 1;
-        elementboss.style.zIndex = zIndexboss;
-        elementhome.style.zIndex = zIndexhome;
+
+.encabezado{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 10%;
+    margin-top: 5%;
+}
+
+.returnhome{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 80%;
+    background-size: cover;
+    overflow: hidden;
+    border-radius: 45%;
+    background-image: url("maderaestropeada.avif");
+
+}
+
+.returnhome p{
+    font-size: large;
+    font-weight: 400;
+    font-family:fantasy; 
+}
+
+.dinero{
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 6%;
+    overflow: hidden;
+    margin-top: 5%;
+}
+.dinero p{
+    font-size: large;
+    font-family: fantasy;
+    font-weight: 300;
+}
+
+.oro{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: gold;
+    width: 45%;
+    height: 90%;
+    overflow: hidden;
+    border-radius: 40%;
+}
+
+.gemas{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: purple;
+    width: 45%;
+    height: 90%;
+    overflow: hidden;
+    border-radius: 40%;
+}
+
+#barra-vida{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: orange;
+    width: 80%;
+    height: 6%;
+    overflow: hidden;
+    border-radius: 40%;
+    margin-top: 5%;
+}
+
+#salud{
+    width: 80%;
+    height: 20%;
+    background-color: red;
+    padding: 0;
+    margin-right: 10%;
+}
+
+#boss{
+    width: 90%;
+    height: 65%;
+    margin-top: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    lighting-color: aliceblue;
+    filter: drop-shadow(10px 7px 10px orange);
+    }
+
+    .multiplicadores{
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 20%;
+        margin-bottom: 2%;
+        overflow: hidden;
+        margin-bottom: 5px;
+    }
+    .mult-daño{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 45%;
+        height: 90%;
+        overflow: hidden;
+        border-radius: 40%;
+        flex-direction: column;
 
     }
-)
+    .mult-daño p{
+        font-size: xx-large;
+        font-weight: 800;
+        color: red;
+        margin: 0;
+    }
+    
+    .mult-puntos{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 45%;
+        height: 90%;
+        overflow: hidden;
+        border-radius: 40%;
+        flex-direction: column;
 
-viajeboss.addEventListener("click",function(){
-    zIndexboss= 1;
-    zIndexhome= 0;
-    elementboss.style.zIndex = zIndexboss;
-    elementhome.style.zIndex = zIndexhome;
-}
-)
+    }
+    .mult-puntos p{
+        font-size: xx-large;
+        font-weight: 800;
+        color: white;
+        margin: 0;
+    }
+
+    #fondo-home{
+        margin: 0px;
+        padding: 0px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 370px;
+        height: 687px;
+        border-radius: 5%;
+        z-index: 2;
+        position: absolute;
+        border: 5px solid brown;
+    }
+    
+    #homeplace{
+        display: flex;
+        position: relative;
+        margin-top: 0;
+        height: 80%;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background-image: url("bosque.jpg");
+        background-size: cover;
+        border-top-left-radius: 5%;
+        border-top-right-radius: 5%;
+        border-bottom-left-radius: 0%;
+        border-bottom-right-radius: 0%;
+    }
+
+    #head-home{
+        position: relative;
+        width: 95%;
+        height: 10%;
+        margin-top: 2%;
+    }
+
+    #head-home p{
+        font-size: larger;
+        margin-top: 20%;
+    }
+    #ajustes{
+        height: 100%;
+        width: 15%;
+        text-align: center;
+        float: left;
+        background-color: yellow;
+        border: solid black 2px;
+        border-radius: 50%;
+        box-shadow:5px 3px 3px orange;
+    }
+    #clasificacion{
+        height: 100%;
+        width: 15%;
+        text-align: center;
+        background-color: yellow;
+        float: right;
+        border: solid black 2px;
+        border-radius: 50%;
+        box-shadow:5px 3px 3px orange;
+    }
 
 
-boss.addEventListener("click",function(){
+    #home{
+        justify-content: center;
+        align-items: center;
+        margin-top: auto;
+        margin-bottom: 0%;
+        width: 90%;
+        padding: 0;
+        filter: grayscale(60%);
+    
+        
 
-    //SONIDO AL GOLPEAR ESPADA.
-    let hit =  document.getElementById("hit1");
-    hit.play();
+    }
+    #viajes{
+        position: relative;
+        width: 100%;
+        height: 30%;
+        margin-top: 0%;
+        display: flex;
+        flex-wrap: wrap;
+        background-image: url("mesa.png");
+        border-top-left-radius: 0%;
+        border-top-right-radius: 0%;
 
-    //BAJAR LA BARRA DE VIDA.
-    let barra=document.getElementById("salud");
-    barrainicial -= dañito;
-    barra.style.width= barrainicial+"%";
-    // CONDICIONES CUANDO MUERE EL BOSS.
+    }
 
-        if (barrainicial<1.1 || barrainicial===0){                     
-                if (listabossessinusar.length===0){
-                    listabossessinusar=[].concat(bosses);
-                }
+    .viaje{
+        height: 30%;
+        width: 40%;
+        margin-right: 5%;
+        margin-left: 5%;
+        margin-top: 5%;
+        margin-bottom: 0%;
+        text-align: center;
+        background-color: goldenrod;
+        border-radius: 10%;
+        box-shadow:5px 3px 3px black;
 
-            // AGREGAR LA PUNTUACION POR CADA BOSS.
-            puntuacion += puntuacionOro;    
-            document.querySelector(".oro-texto").innerText =puntuacion;
-            document.querySelector(".mult-puntos-texto").innerText =multPuntuacion;
- 
-            
-            let aleatorio = Math.floor(Math.random()*listabossessinusar.length);
-            barrainicial=80;
-            boss.src = listabossessinusar[aleatorio];
-
-            //BOSS ESPECIAL 10
-            if (puntuacion===10){
-                boss.src = bossesEspeciales[0];
-                let boss1grito =  document.getElementById("gritoboss1");
-                boss1grito.play();
-                puntuacionOro=puntuacionOro*10
-                multPuntuacion = multPuntuacion*10
-            }
-
-            //ELIMINAR EL BOSS DE LA LISTA NORMAL PARA QUE NO SE REPITAN.
-            listabossessinusar.splice(aleatorio,1);
-
-            dañito -= dañito*0.1;
-        }
-}
-)
-
-function dañocontinuo(damage){
-    let barra=document.getElementById("salud");
-    damage = damage*0.5
-    barrainicial -= damage;
-    barra.style.width= barrainicial+"%";
-    // CONDICIONES CUANDO MUERE EL BOSS.
-
-        if (barrainicial<1.1 || barrainicial===0){                     
-                if (listabossessinusar.length===0){
-                    listabossessinusar=[].concat(bosses);
-                }
-
-            // AGREGAR LA PUNTUACION POR CADA BOSS.
-            puntuacion += puntuacionOro;    
-            document.querySelector(".oro-texto").innerText =puntuacion;
-            document.querySelector(".mult-puntos-texto").innerText =multPuntuacion;
- 
-            
-            let aleatorio = Math.floor(Math.random()*listabossessinusar.length);
-            barrainicial=80;
-            boss.src = listabossessinusar[aleatorio];
-
-            //BOSS ESPECIAL 10
-            if (puntuacion===10){
-                boss.src = bossesEspeciales[0];
-                let boss1grito =  document.getElementById("gritoboss1");
-                boss1grito.play();
-                puntuacionOro=puntuacionOro*10
-                multPuntuacion = multPuntuacion*10
-            }
-
-            //ELIMINAR EL BOSS DE LA LISTA NORMAL PARA QUE NO SE REPITAN.
-            listabossessinusar.splice(aleatorio,1);
-
-            damage -= damage*0.1;
-}}
-
-let dañocontinuorep = setInterval(function() {
-    dañocontinuo(dañito);}, 500);
+    }
+    .viaje p{
+        font-size: large;
+        font-weight: 400;
+        margin-bottom: 4%;
+        margin-top: 10%;
+        font-family:fantasy;    
+    }
