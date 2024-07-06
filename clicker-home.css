@@ -1,17 +1,4 @@
-body{
-    height: 100vh;
-    margin: 0px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-image: url("fondobody.jpg");
-    background-size: cover;
-    background-position: center;
-    position: relative;
-}
 #fondo-home{
-    position: absolute;
-    z-index: 1;
     margin: 0px;
     padding: 0px;
     display: flex;
@@ -19,140 +6,104 @@ body{
     align-items: center;
     width: 370px;
     height: 687px;
-    background-image: url("fondo-boss.gif");
-    background-size: cover;
-    background-position: center;
     border-radius: 5%;
-}
-.encabezado{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 10%;
-    overflow: hidden;
-    margin-top: 5%;
+    z-index: 1;
+    position: absolute;
+    border: 5px solid brown;
 }
 
-.returnhome{
+
+#homeplace{
     display: flex;
+    position: relative;
+    margin-top: 0;
+    height: 80%;
     justify-content: center;
     align-items: center;
-    height: 100%;
-    width: 80%;
+    flex-direction: column;
+    background-image: url("bosque.jpg");
     background-size: cover;
-    overflow: hidden;
-    border-radius: 45%;
-    background-image: url("maderaestropeada.avif");
-
+    border-top-left-radius: 5%;
+    border-top-right-radius: 5%;
+    border-bottom-left-radius: 0%;
+    border-bottom-right-radius: 0%;
 }
 
-.dinero{
-    display: flex;
+#head-home{
+    position: relative;
+    width: 95%;
+    height: 10%;
+    margin-top: 2%;
+}
+
+#head-home p{
+    font-size: larger;
+    margin-top: 20%;
+}
+#ajustes{
+    height: 100%;
+    width: 15%;
+    text-align: center;
+    float: left;
+    background-color: yellow;
+    border: solid black 2px;
+    border-radius: 50%;
+    box-shadow:5px 3px 3px orange;
+}
+#clasificacion{
+    height: 100%;
+    width: 15%;
+    text-align: center;
+    background-color: yellow;
+    float: right;
+    border: solid black 2px;
+    border-radius: 50%;
+    box-shadow:5px 3px 3px orange;
+}
+
+
+#home{
     justify-content: center;
     align-items: center;
-    width: 100%;
-    height: 6%;
-    overflow: hidden;
-    margin-top: 10%;
-}
-
-.oro{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: gold;
-    width: 45%;
-    height: 90%;
-    overflow: hidden;
-    border-radius: 40%;
-}
-
-.gemas{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: purple;
-    width: 45%;
-    height: 90%;
-    overflow: hidden;
-    border-radius: 40%;
-}
-
-#barra-vida{
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    background-color: orange;
-    width: 80%;
-    height: 6%;
-    overflow: hidden;
-    border-radius: 40%;
-    margin-top: 5%;
-}
-
-#salud{
-    width: 80%;
-    height: 20%;
-    background-color: red;
-    padding: 0;
-    margin-right: 10%;
-}
-
-#boss{
+    margin-top: auto;
+    margin-bottom: 0%;
     width: 90%;
-    height: 65%;
-    margin-top: 10%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    lighting-color: aliceblue;
-    filter: drop-shadow(10px 7px 10px orange);
-    }
+    padding: 0;
+    filter: grayscale(60%);
 
-    .multiplicadores{
-        position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        height: 20%;
-        margin-top: 20%;
-        overflow: hidden;
-        margin-bottom: 5px;
-    }
-    .mult-daño{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 45%;
-        height: 90%;
-        overflow: hidden;
-        border-radius: 40%;
-        flex-direction: column;
-
-    }
-    .mult-daño p{
-        font-size: xx-large;
-        font-weight: 800;
-        color: red;
-        margin: 0;
-    }
     
-    .mult-puntos{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 45%;
-        height: 90%;
-        overflow: hidden;
-        border-radius: 40%;
-        flex-direction: column;
 
-    }
-    .mult-puntos p{
-        font-size: xx-large;
-        font-weight: 800;
-        color: white;
-        margin: 0;
-    }
+}
+#viajes{
+    position: relative;
+    width: 100%;
+    height: 30%;
+    margin-top: 0%;
+    display: flex;
+    flex-wrap: wrap;
+    background-image: url("mesa.png");
+    border-top-left-radius: 0%;
+    border-top-right-radius: 0%;
+
+}
+
+.viaje{
+    height: 30%;
+    width: 40%;
+    margin-right: 5%;
+    margin-left: 5%;
+    margin-top: 5%;
+    margin-bottom: 0%;
+    text-align: center;
+    background-color: goldenrod;
+    border-radius: 10%;
+    box-shadow:5px 3px 3px black;
+
+}
+.viaje p{
+    font-size: large;
+    font-weight: 400;
+    margin-bottom: 4%;
+    margin-top: 10%;
+    font-family:fantasy;    
+}
