@@ -93,3 +93,42 @@ boss.addEventListener("click",function(){
 }
 )
 
+function dañocontinuo(damage){
+    let barra=document.getElementById("salud");
+    damage = damage*0.5
+    barrainicial -= damage;
+    barra.style.width= barrainicial+"%";
+    // CONDICIONES CUANDO MUERE EL BOSS.
+
+        if (barrainicial<1.1 || barrainicial===0){                     
+                if (listabossessinusar.length===0){
+                    listabossessinusar=[].concat(bosses);
+                }
+
+            // AGREGAR LA PUNTUACION POR CADA BOSS.
+            puntuacion += puntuacionOro;    
+            document.querySelector(".oro-texto").innerText =puntuacion;
+            document.querySelector(".mult-puntos-texto").innerText =multPuntuacion;
+ 
+            
+            let aleatorio = Math.floor(Math.random()*listabossessinusar.length);
+            barrainicial=80;
+            boss.src = listabossessinusar[aleatorio];
+
+            //BOSS ESPECIAL 10
+            if (puntuacion===10){
+                boss.src = bossesEspeciales[0];
+                let boss1grito =  document.getElementById("gritoboss1");
+                boss1grito.play();
+                puntuacionOro=puntuacionOro*10
+                multPuntuacion = multPuntuacion*10
+            }
+
+            //ELIMINAR EL BOSS DE LA LISTA NORMAL PARA QUE NO SE REPITAN.
+            listabossessinusar.splice(aleatorio,1);
+
+            damage -= damage*0.1;
+}}
+
+let dañocontinuorep = setInterval(function() {
+    dañocontinuo(dañito);}, 500);
