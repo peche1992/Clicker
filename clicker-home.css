@@ -1,3 +1,6 @@
+p{
+    cursor: pointer;
+}
 #fondo-home{
     margin: 0px;
     padding: 0px;
@@ -11,7 +14,6 @@
     position: absolute;
     border: 5px solid brown;
 }
-
 
 #homeplace{
     display: flex;
@@ -40,7 +42,7 @@
     font-size: larger;
     margin-top: 20%;
 }
-#ajustes{
+#viaje-configuracion{
     height: 100%;
     width: 15%;
     text-align: center;
@@ -50,7 +52,7 @@
     border-radius: 50%;
     box-shadow:5px 3px 3px orange;
 }
-#clasificacion{
+#viaje-clasificacion{
     height: 100%;
     width: 15%;
     text-align: center;

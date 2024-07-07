@@ -124,6 +124,7 @@ body{
     align-items: center;
     lighting-color: aliceblue;
     filter: drop-shadow(10px 7px 10px orange);
+    cursor: url("icono-espada.png"), auto;
     }
 
     .multiplicadores{

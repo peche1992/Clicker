@@ -1,27 +1,94 @@
+// LO QUE SE ME HA OCURRIDO PARA AUDIO SEMIAUTOMATICO.
+const cualquierlugar = document.getElementsByTagName("body")
+const audiohome = document.getElementById('audiohome');
+cualquierlugar[0].addEventListener('click', function() {
+        audiohome.play();
+});
+
 const boss=document.getElementById("boss")
 
 const home=document.getElementsByClassName("returnhome")
-const viajeboss=document.getElementById("viaje-boss")
 const viajemejoras=document.getElementById("viaje-hab")
+const viajeboss=document.getElementById("viaje-boss")
 const viajeheroes=document.getElementById("viaje-heroes")
 const viajecompras=document.getElementById("viaje-compras")
+const viajeconfiguracion=document.getElementById("viaje-configuracion")
+const viajeclasificacion=document.getElementById("viaje-clasificacion")
 
 
 //RECOGER LOS ZTIPE DE LOS DIVS
-let elementboss = document.getElementById("fondo-boss");
-let zIndexBoss = window.getComputedStyle(elementboss).zIndex;
 
-let elementhome = document.getElementById("fondo-home");
-let zIndexHome = window.getComputedStyle(elementhome).zIndex;
+const fondos = {
+    home: document.getElementById("fondo-home"),
+    mejoras: document.getElementById("fondo-mejoras"),
+    boss: document.getElementById("fondo-boss"),
+    heroes: document.getElementById("fondo-heroes"),
+    compras: document.getElementById("fondo-compras"),
+    configuracion:document.getElementById("fondo-configuracion"),
+    clasificacion:document.getElementById("fondo-clasificacion")
 
-let elementmejoras = document.getElementById("fondo-mejoras");
-let zIndexMejoras = window.getComputedStyle(elementmejoras).zIndex;
+};
 
-let elementheroes = document.getElementById("fondo-heroes");
-let zIndexheroes = window.getComputedStyle(elementheroes).zIndex;
+const zIndices = {
+    zIndexHome: window.getComputedStyle(fondos.home).zIndex,
+    zIndexMejoras: window.getComputedStyle(fondos.mejoras).zIndex,
+    zIndexBoss: window.getComputedStyle(fondos.boss).zIndex,
+    zIndexHeroes: window.getComputedStyle(fondos.heroes).zIndex,
+    zIndexCompras: window.getComputedStyle(fondos.compras).zIndex,
+    zIndexConfiguracion: window.getComputedStyle(fondos.configuracion).zIndex,
+    zIndexClasificacion: window.getComputedStyle(fondos.clasificacion).zIndex
 
-let elementcompras = document.getElementById("fondo-compras");
-let zIndexcompras = window.getComputedStyle(elementcompras).zIndex;
+};
+
+// AQUI ES DONDE VAMOS A DAR LOS VALORES A TODOS LOS ZINDEX
+function actualizarzIndex (zIndexHome, zIndexMejoras, zIndexBoss, zIndexHeroes, zIndexCompras, zIndexConfiguracion, zIndexClasificacion){
+    fondos.home.style.zIndex = zIndexHome;          //0
+    fondos.mejoras.style.zIndex = zIndexMejoras;    //1
+    fondos.boss.style.zIndex = zIndexBoss;          //2
+    fondos.heroes.style.zIndex = zIndexHeroes       //3
+    fondos.compras.style.zIndex=zIndexCompras       //4   
+    fondos.clasificacion.style.zIndex=zIndexClasificacion       //5   
+    fondos.configuracion.style.zIndex=zIndexConfiguracion       //6      
+}
+
+//HOME
+for(let listahome=0;listahome<home.length;listahome++){
+    home[listahome].addEventListener("click",function(){
+        actualizarzIndex(1,0,0,0,0,0,0)
+    }
+)}
+
+// VIAJES DESDE EL HOME.
+    //VIAJE A LAS MEJORAS.
+viajemejoras.addEventListener("click",function(){
+    actualizarzIndex(0,1,0,0,0,0,0)
+    })
+
+    // VIAJE A LOS BOSSES.
+viajeboss.addEventListener("click",function(){
+    actualizarzIndex(0,0,1,0,0,0,0)
+})
+
+    //VIAJE A LOS HEROES
+viajeheroes.addEventListener("click",function(){
+    actualizarzIndex(0,0,0,1,0,0,0)
+    })
+
+//VIAJE A LOS COMPRAS
+viajecompras.addEventListener("click",function(){
+    actualizarzIndex(0,0,0,0,1,0,0)
+    })
+
+//VIAJE A LA CONFIGURACION.
+viajeconfiguracion.addEventListener("click",function(){
+    actualizarzIndex(0,0,0,0,0,1,0)
+    })
+
+//VIAJE A LA CLASIFICACION.
+viajeclasificacion.addEventListener("click",function(){
+    actualizarzIndex(0,0,0,0,0,0,1)
+    })
+
 
 let barrainicial = 80;
 let puntuacion = parseInt(document.querySelector(".oro-texto").innerText,10);
@@ -42,40 +109,7 @@ let dañito= 20;
 listabossessinusar=[].concat(bosses);
 let puntuacionOro=1;
 
-// AQUI ES DONDE VAMOS A DAR LOS VALORES A TODOS LOS ZINDEX
-function actualizarzIndex (zIndexHome, zIndexMejoras, zIndexBoss){
-    elementhome.style.zIndex = zIndexHome;          //0
-    elementmejoras.style.zIndex = zIndexMejoras;    //1
-    elementboss.style.zIndex = zIndexBoss;          //2
-    }
 
-//HOME
-for(let listahome=0;listahome<home.length;listahome++){
-    home[listahome].addEventListener("click",function(){
-        actualizarzIndex(1,0,0,0,0)
-    }
-)}
-
-// VIAJES DESDE EL HOME.
-    //VIAJE A LAS MEJORAS.
-viajemejoras.addEventListener("click",function(){
-    actualizarzIndex(0,1,0,0,0)
-    })
-
-    // VIAJE A LOS BOSSES.
-viajeboss.addEventListener("click",function(){
-    actualizarzIndex(0,0,1,0,0)
-})
-
-    //VIAJE A LOS HEROES
-viajeheroes.addEventListener("click",function(){
-    actualizarzIndex(0,0,0,1,0)
-    })
-
-//VIAJE A LOS HEROES
-    viajecompras.addEventListener("click",function(){
-        actualizarzIndex(0,0,0,0,1)
-        })
 
 //* FUNCION DE DAÑO AL HACER CLICK.
 boss.addEventListener("click",function(){
