@@ -7,9 +7,22 @@
     width: 370px;
     height: 687px;
     border-radius: 5%;
-    z-index: 0;
+    z-index: 1;
     position: absolute;
     border: 5px solid brown;
     background-image: url("biblioteca.jpg");
     background-size: cover;
+}
+
+#cuadro-mejoras{
+    margin-top: 5%;
+    height: 80%;
+    width: 100%;
+    background-color: red;
+    display: flex;
+    display: table-column;
+}
+
+#mejora-daño{
+    
 }

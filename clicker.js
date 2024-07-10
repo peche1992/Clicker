@@ -5,8 +5,8 @@ cualquierlugar[0].addEventListener('click', function() {
         audiohome.play();
 });
 
-const boss=document.getElementById("boss")
 
+//! TODA LA PARTE DE CAMBIAR DE PANTALLA
 const home=document.getElementsByClassName("returnhome")
 const viajemejoras=document.getElementById("viaje-hab")
 const viajeboss=document.getElementById("viaje-boss")
@@ -15,9 +15,7 @@ const viajecompras=document.getElementById("viaje-compras")
 const viajeconfiguracion=document.getElementById("viaje-configuracion")
 const viajeclasificacion=document.getElementById("viaje-clasificacion")
 
-
 //RECOGER LOS ZTIPE DE LOS DIVS
-
 const fondos = {
     home: document.getElementById("fondo-home"),
     mejoras: document.getElementById("fondo-mejoras"),
@@ -89,12 +87,25 @@ viajeclasificacion.addEventListener("click",function(){
     actualizarzIndex(0,0,0,0,0,0,1)
     })
 
+const boss=document.getElementById("boss")
 
-let barrainicial = 80;
+
+let barrainicial = 60;
+let vidainicial = 10;
+const anchovida = 60;
+
+let saludinicial = 10;
+let saludqueda = 10;
+
+let contadormuertos=0;
+let contadormuertosboss=0;
+
+let daño= 1;
+
+let puntuacionOro=1;
+
 let puntuacion = parseInt(document.querySelector(".oro-texto").innerText,10);
 let multPuntuacion = parseInt(document.querySelector(".mult-puntos-texto").innerText,10);
-
-
 
 const bosses= ["final-boss.png",
                "pngwing.com.png",
@@ -103,11 +114,12 @@ const bosses= ["final-boss.png",
 ]
 
 const bossesEspeciales = ["bossesp1.png"]
+let boss10aparecer= false;
+let boss10ejecutado =false;
 
 const bossesfinales = []
-let dañito= 20;
 listabossessinusar=[].concat(bosses);
-let puntuacionOro=1;
+
 
 
 
@@ -119,85 +131,73 @@ boss.addEventListener("click",function(){
 
     //BAJAR LA BARRA DE VIDA.
     let barra=document.getElementById("salud");
-    barrainicial -= dañito;
-    barra.style.width= barrainicial+"%";})
+    barrainicial -= (daño*anchovida)/vidainicial;
+    barra.style.width= barrainicial+"%";
+    saludqueda-=daño;
+    //BAJAR PUNTOS DE VIDA
+    document.getElementById("salud-tiene-texto").textContent=saludqueda.toFixed(2);
+    document.getElementById("salud-total-texto").textContent=saludinicial.toFixed(2);
+
+    muerteboss();
+})
+
 
 //* FUNCION DE DAÑO CONTINO, DEBE SER COMO LA DE HACER CLICK.
 function dañocontinuo(damage){
     let barra=document.getElementById("salud");
-    damage = damage*0.5
-    barrainicial -= damage;
+    damage = daño*0.1
+    barrainicial -= (damage*anchovida)/vidainicial;
     barra.style.width= barrainicial+"%";
+    saludqueda-=damage;
+    //BAJAR PUNTOS DE VIDA
+    document.getElementById("salud-tiene-texto").textContent=saludqueda.toFixed(2);
+    document.getElementById("salud-total-texto").textContent=saludinicial.toFixed(2);
     // CONDICIONES CUANDO MUERE EL BOSS.
+    muerteboss()
+}
 
-        if (barrainicial<1.1 || barrainicial===0){                     
-                if (listabossessinusar.length===0){
-                    listabossessinusar=[].concat(bosses);
-                }
+//* CONDICIONES CUANDO MUERE EL BOSS.
+//? AQUI VOY A IR DEJANDO LAS FUNCIONES
+const dañocontinuorep = setInterval(function() {
+    dañocontinuo(daño);}, 500);
 
+function muerteboss(){ 
+    let aleatorio = Math.floor(Math.random()*listabossessinusar.length);
+        if (saludqueda<=0){  
+            boss.src = listabossessinusar[aleatorio];  
+
+        //ELIMINAR EL BOSS DE LA LISTA NORMAL PARA QUE NO SE REPITAN.
+        listabossessinusar.splice(aleatorio,1);     
+        
+            if (listabossessinusar.length===0){
+                listabossessinusar=[].concat(bosses);
+            }
+
+                //!BOSS ESPECIAL 10
+                    if (boss10aparecer===false && contadormuertos === 9){
+                        boss.src = bossesEspeciales[0];
+                        let boss1grito =  document.getElementById("gritoboss1");
+                        boss1grito.play();
+                        boss10aparecer =true;}
+
+                    if (boss10aparecer===true && saludqueda<=0 && contadormuertos===10){
+                        contadormuertosboss+=1;
+                        boss10ejecutado = true;
+                        boss10aparecer = false;
+                        alert("Enhorabuena, has matado al elemental de sombra."); 
+                        puntuacionOro=puntuacionOro*10;
+                        multPuntuacion = multPuntuacion*10;
+                    }  
+           
+            barrainicial=60;
+            saludinicial+=1;
+            vidainicial+=1;
+            saludqueda=saludinicial;
+            contadormuertos+=1;
+
+        
             // AGREGAR LA PUNTUACION POR CADA BOSS.
             puntuacion += puntuacionOro;    
             document.querySelector(".oro-texto").innerText =puntuacion;
             document.querySelector(".mult-puntos-texto").innerText =multPuntuacion;
- 
-            
-            let aleatorio = Math.floor(Math.random()*listabossessinusar.length);
-            barrainicial=80;
-            boss.src = listabossessinusar[aleatorio];
-
-            //BOSS ESPECIAL 10
-            if (puntuacion===10){
-                boss.src = bossesEspeciales[0];
-                let boss1grito =  document.getElementById("gritoboss1");
-                boss1grito.play();
-                puntuacionOro=puntuacionOro*10
-                multPuntuacion = multPuntuacion*10
-            }
-                                let boss10ejecutado =true;
-                                if (boss10ejecutado===true && puntuacion==20 ){
-                                    alert("Enorabuena, ¡Has matado al elemental de sombra!");
-                                    boss10ejecutado=false; } 
-
-            //ELIMINAR EL BOSS DE LA LISTA NORMAL PARA QUE NO SE REPITAN.
-            listabossessinusar.splice(aleatorio,1);
-
-            damage -= damage*0.1;
-}}
-
-//* CONDICIONES CUANDO MUERE EL BOSS.
-   if (barrainicial<1.1 || barrainicial===0){                     
-            if (listabossessinusar.length===0){
-                listabossessinusar=[].concat(bosses);
-            }
-                        //!BOSS ESPECIAL 10
-                            let boss10aparecer= true;
-                            if (boss10aparecer===true && puntuacion>=10){
-                                boss.src = bossesEspeciales[0];
-                                let boss1grito =  document.getElementById("gritoboss1");
-                                boss1grito.play();
-                                puntuacionOro=puntuacionOro*10;
-                                multPuntuacion = multPuntuacion*10;
-                                boss10aparecer =false;}  
-
-                                let boss10ejecutado =true;
-                                if (boss10ejecutado===true && puntuacion==20 ){
-                                    alert("Enorabuena, ¡Has matado al elemental de sombra!");
-                                    boss10ejecutado=false; }  
-                                   //ELIMINAR EL BOSS DE LA LISTA NORMAL PARA QUE NO SE REPITAN.
-                                   listabossessinusar.splice(aleatorio,1);
-                                   dañito -= dañito*0.1;
-
-    let aleatorio = Math.floor(Math.random()*listabossessinusar.length);
-    barrainicial=80;
-    boss.src = listabossessinusar[aleatorio];
-
-    // AGREGAR LA PUNTUACION POR CADA BOSS.
-    puntuacion += puntuacionOro;    
-    document.querySelector(".oro-texto").innerText =puntuacion;
-    document.querySelector(".mult-puntos-texto").innerText =multPuntuacion;
-    }
-
-
-//? AQUI VOY A IR DEJANDO LAS FUNCIONES
-const dañocontinuorep = setInterval(function() {
-    dañocontinuo(dañito);}, 500);
+        } }
