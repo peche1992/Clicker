@@ -4,6 +4,13 @@ const audiohome = document.getElementById('audiohome');
 cualquierlugar[0].addEventListener('click', function() {
         audiohome.play();
 });
+//! VARIABLES DE LA PANTALLA DE MEJORAS
+let comprardaño=document.getElementById("comprar_mejora_daño")
+
+//*Aqui van a ir el texto que informa de daño y oro.
+let textdaño = document.getElementById("texto-daño-actual")
+let textdaño_oro = document.getElementById("texto-daño-actual_oro")
+
 
 
 //! TODA LA PARTE DE CAMBIAR DE PANTALLA
@@ -197,7 +204,21 @@ function muerteboss(){
 
         
             // AGREGAR LA PUNTUACION POR CADA BOSS.
-            puntuacion += puntuacionOro;    
-            document.querySelector(".oro-texto").innerText =puntuacion;
+            puntuacionoro += 1;    
+            document.querySelector(".oro-texto").innerText =puntuacionOro;
             document.querySelector(".mult-puntos-texto").innerText =multPuntuacion;
+            textdaño_oro.innerText = puntuacionOro;
+
         } }
+
+
+
+//!A PARTIR DE AQUI VOY A HACER LAS FUNCIONES DE LA PANTALLA DE MEJORAS
+comprardaño.addEventListener("click",function(){
+
+    if (daño>=1 && daño<=10 && puntuacionOro>0)
+        puntuacionOro-=1
+        daño+=1;
+        textdaño.innerText = daño;
+        textdaño_oro.innerText = puntuacionOro;
+})
