@@ -22,7 +22,7 @@ body{
     background-size: cover;
     background-position: center;
     border-radius: 5%;
-    z-index: 0;
+    z-index: 2;
     position: absolute;
     border: 5px solid gold;
 }
@@ -51,7 +51,8 @@ body{
 .returnhome p{
     font-size: large;
     font-weight: 400;
-    font-family:fantasy; 
+    font-family:fantasy;
+    cursor: pointer; 
 }
 
 .dinero{
@@ -145,6 +146,14 @@ body{
     filter: drop-shadow(10px 7px 10px orange);
     cursor: url("icono-espada.png"), auto;
     }
+
+#ataquealboss{
+    position: absolute;
+    width: 40%;
+    bottom: 30%;
+    left: 38%;
+    pointer-events: none;
+}
 
     .multiplicadores{
         position: relative;

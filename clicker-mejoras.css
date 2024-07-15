@@ -7,11 +7,14 @@
     width: 370px;
     height: 687px;
     border-radius: 5%;
-    z-index: 2;
+    z-index: 0;
     position: absolute;
     border: 5px solid brown;
     background-image: url("biblioteca.jpg");
     background-size: cover;
+}
+#cuadro-mejoras p{
+    color: #242424;
 }
 
 #cuadro-mejoras{
@@ -50,7 +53,7 @@
     flex-direction: column;
     border: solid grey 2px;
     border-radius: 25%;
-    background-color: blue;
+    background-color: rgba(253, 189, 15, 0.278);
 }
 
 #logo-daño{
@@ -143,12 +146,8 @@
     background-size:cover;
     background-position: center;
     background-repeat: no-repeat;
+    cursor: pointer;
 }
 
-.precio-mejoras p{
-    font-family: fantasy;
-    font-size: larger;
-    margin-top: 25%;
-    padding: 0%;
-}
+
 

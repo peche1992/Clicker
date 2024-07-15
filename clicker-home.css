@@ -1,6 +1,3 @@
-p{
-    cursor: pointer;
-}
 #fondo-home{
     margin: 0px;
     padding: 0px;
@@ -107,5 +104,6 @@ p{
     font-weight: 400;
     margin-bottom: 4%;
     margin-top: 10%;
-    font-family:fantasy;    
+    font-family:fantasy;
+    cursor: pointer;
 }

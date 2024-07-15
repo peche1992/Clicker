@@ -5,12 +5,11 @@ cualquierlugar[0].addEventListener('click', function() {
         audiohome.play();
 });
 //! VARIABLES DE LA PANTALLA DE MEJORAS
-let comprardaño=document.getElementById("comprar_mejora_daño")
+let comprardaño=document.getElementById("comprar_mejora_daño");
 
 //*Aqui van a ir el texto que informa de daño y oro.
-let textdaño = document.getElementById("texto-daño-actual")
-let textdaño_oro = document.getElementById("texto-daño-actual_oro")
-
+let textdaño = document.getElementById("texto-daño-actual");
+let textdaño_oro = document.getElementById("texto-daño-actual_oro");
 
 
 //! TODA LA PARTE DE CAMBIAR DE PANTALLA
@@ -109,9 +108,10 @@ let contadormuertosboss=0;
 
 let daño= 1;
 
-let puntuacionOro=1;
+let puntuacion_oro=1;
+document.querySelector(".oro-texto").innerText =puntuacion_oro;
 
-let puntuacion = parseInt(document.querySelector(".oro-texto").innerText,10);
+// let puntuacion = parseInt(document.querySelector(".oro-texto").innerText,10);
 let multPuntuacion = parseInt(document.querySelector(".mult-puntos-texto").innerText,10);
 
 const bosses= ["final-boss.png",
@@ -169,6 +169,7 @@ const dañocontinuorep = setInterval(function() {
     dañocontinuo(daño);}, 500);
 
 function muerteboss(){ 
+
     let aleatorio = Math.floor(Math.random()*listabossessinusar.length);
         if (saludqueda<=0){  
             boss.src = listabossessinusar[aleatorio];  
@@ -192,7 +193,7 @@ function muerteboss(){
                         boss10ejecutado = true;
                         boss10aparecer = false;
                         alert("Enhorabuena, has matado al elemental de sombra."); 
-                        puntuacionOro=puntuacionOro*10;
+                        puntuacion_oro+=10;
                         multPuntuacion = multPuntuacion*10;
                     }  
            
@@ -204,21 +205,59 @@ function muerteboss(){
 
         
             // AGREGAR LA PUNTUACION POR CADA BOSS.
-            puntuacionoro += 1;    
-            document.querySelector(".oro-texto").innerText =puntuacionOro;
+            puntuacion_oro += 1;    
+            
+
+            //TENGO QUE ACTUALIZAR TODOS LOS TEXTOS TANTO EN EL BOSS COMO EN MEJORAS. ESTE ES EN EL BOSS
+            document.querySelector(".mult-daño-texto").innerText=daño;
+            document.querySelector(".oro-texto").innerText =puntuacion_oro;
             document.querySelector(".mult-puntos-texto").innerText =multPuntuacion;
-            textdaño_oro.innerText = puntuacionOro;
+
+            textdaño_oro.innerText = puntuacion_oro;
 
         } }
 
+//*FUNCION PARA QUE CUANDO HAGA CLICK APAREZCA LA IMAGEN
+document.getElementById('boss').addEventListener('click', function() {
+    //PRIMERO COGEMOS LA IMAGEN DEL ATAQUE
+    const attackImg = document.getElementById('ataquealboss');
+
+    // VOY A PONERLE QUE APAREZCA DE MANERA ALEATORIO CON UN MARGEN
+    let ataque_izquierda=Math.floor(Math.random()*(50-20)+20)
+    let ataque_abajo=Math.floor(Math.random()*(50-20)+20)
+    //AQUI LE DAMOS LA POSICION EN EL CSS A LA IMAGEN DE ATAQUE.
+    attackImg.style.left = ataque_izquierda + "%";
+    attackImg.style.bottom = ataque_abajo +"%";
+
+    //APARECE LA IMAGEN DE ATAQUE.
+    attackImg.style.display = 'block';
+
+    // A LOS 500ms DESAPARECE DE NUEVO ESTA IMAGEN QUITANDOLA EN EL CSS
+    setTimeout(function() {
+        attackImg.style.display = 'none';
+    }, 500);
+});
 
 
 //!A PARTIR DE AQUI VOY A HACER LAS FUNCIONES DE LA PANTALLA DE MEJORAS
 comprardaño.addEventListener("click",function(){
 
-    if (daño>=1 && daño<=10 && puntuacionOro>0)
-        puntuacionOro-=1
+    if (daño<=10 && puntuacion_oro>0){
+        puntuacion_oro-=1
         daño+=1;
+        }
+    
+    else if(daño>=10 && puntuacion_oro>=10){
+        puntuacion_oro-=10
+        daño+=1;
+        }
+        
+//AQUI TENEMOS DOS EJEMPLOS DE COMO HACER UNA ENTRADA DE TEXTO EN HTML
+
+        document.querySelector(".mult-daño-texto").innerText=daño;
+        document.querySelector(".oro-texto").innerText =puntuacion_oro;
+        textdaño_oro.innerText = puntuacion_oro;
         textdaño.innerText = daño;
-        textdaño_oro.innerText = puntuacionOro;
+
+
 })
