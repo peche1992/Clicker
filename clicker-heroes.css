@@ -7,7 +7,7 @@
     width: 370px;
     height: 687px;
     border-radius: 5%;
-    z-index: 0;
+    z-index: 2;
     position: absolute;
     border: 5px solid gold;
     background-image: url("salaheroes.jpg");
@@ -64,4 +64,56 @@
 
 .nivel{
 text-align: right;
+}
+
+.cuadro_espec_arriba{
+    margin-top: 15%;
+    width: 100%;
+    height: 30%;
+    position: absolute;
+    display: none;
+}
+
+.cuadro_espec_medio{
+    margin-top: 55%;
+    width: 100%;
+    height: 30%;
+    position: absolute;
+    display: none;
+}
+
+.imagen_cuerpo{
+    width: 40%;
+    height: 100%;
+}
+
+
+.historia_pj{
+    width: 60%;
+    height: 100%;
+    background-color: gold;
+    font-family: fantasy;
+    border: solid 2px black;
+    border-radius: 5%;
+}
+
+#imagen_cuerpo_guerrero{
+    background-image: url(Heroes/Guerrero_cuerpo.png);
+    background-size:contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#imagen_cuerpo_hunter{
+    background-image: url(Heroes/Cazador_cuerpo.png);
+    background-size:contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#imagen_cuerpo_druida{
+    background-image: url(Heroes/Druida_cuerpo.png);
+    background-size:contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }

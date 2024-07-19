@@ -68,7 +68,7 @@ viajemejoras.addEventListener("click",function(){
     actualizarzIndex(0,1,0,0,0,0,0)
     })
 
-    // VIAJE A LOS BOSSES.
+    // VIAJE A LOS BOSSEs.
 viajeboss.addEventListener("click",function(){
     actualizarzIndex(0,0,1,0,0,0,0)
 })
@@ -114,10 +114,11 @@ document.querySelector(".oro-texto").innerText =puntuacion_oro;
 // let puntuacion = parseInt(document.querySelector(".oro-texto").innerText,10);
 let multPuntuacion = parseInt(document.querySelector(".mult-puntos-texto").innerText,10);
 
-const bosses= ["final-boss.png",
-               "pngwing.com.png",
-                "pngwing.com (1).png",
-                "pngwing.com (2).png"
+const slimes= ["Monstruos/slimes/0 (1).png","Monstruos/slimes/0 (2).png","Monstruos/slimes/0 (3).png",
+               "Monstruos/slimes/0 (4).png","Monstruos/slimes/0 (5).png","Monstruos/slimes/0 (6).png",
+               "Monstruos/slimes/0 (7).png","Monstruos/slimes/0 (8).png","Monstruos/slimes/0 (9).png",
+               "Monstruos/slimes/0 (10).png","Monstruos/slimes/0 (11).png","Monstruos/slimes/0 (12).png",
+               "Monstruos/slimes/0 (13).png","Monstruos/slimes/0 (14).png","Monstruos/slimes/0 (15).png",
 ]
 
 const bossesEspeciales = ["bossesp1.png"]
@@ -125,7 +126,7 @@ let boss10aparecer= false;
 let boss10ejecutado =false;
 
 const bossesfinales = []
-listabossessinusar=[].concat(bosses);
+listabossessinusar=[].concat(slimes);
 
 
 
@@ -178,7 +179,7 @@ function muerteboss(){
         listabossessinusar.splice(aleatorio,1);     
         
             if (listabossessinusar.length===0){
-                listabossessinusar=[].concat(bosses);
+                listabossessinusar=[].concat(slimes);
             }
 
                 //!BOSS ESPECIAL 10
@@ -235,7 +236,7 @@ document.getElementById('boss').addEventListener('click', function() {
     // A LOS 500ms DESAPARECE DE NUEVO ESTA IMAGEN QUITANDOLA EN EL CSS
     setTimeout(function() {
         attackImg.style.display = 'none';
-    }, 500);
+    }, 200);
 });
 
 
@@ -260,4 +261,45 @@ comprardaño.addEventListener("click",function(){
         textdaño.innerText = daño;
 
 
+})
+
+//!FUNCION PARA QUE APAREZCAN LOS CUADROS DESCRIPTIVOS DE LOS HEROES.
+//SI PINCHAMOS EN LA IMAGEN DEL GUERRERO SU ICONO
+document.getElementById('imagen_guerrero').addEventListener('click', function() {
+    //CREAMOS LA CONSTANTE DE EL GUERRERO
+    const imagenespecguerrero = document.getElementById('espec1');
+    //APARECE LA IMAGEN COMPLETA DEL GUERRERO.
+    imagenespecguerrero.style.display = 'flex';
+});
+// PARA QUITAR LA IMAGEN PINCHAMOS ESTA VEZ EN EL DIV QUE APARECE
+document.getElementById('espec1').addEventListener('click', function() {
+    const imagenespecguerrero = document.getElementById('espec1');
+    //APARECE LA IMAGEN DE ATAQUE.
+    imagenespecguerrero.style.display = 'none';
+});
+
+document.getElementById('imagen_cazador').addEventListener('click', function() {
+    //CREAMOS LA CONSTANTE DE EL GUERRERO
+    const imagenespeccazador = document.getElementById('espec3');
+    //APARECE LA IMAGEN COMPLETA DEL GUERRERO.
+    imagenespeccazador.style.display = 'flex';
+});
+// PARA QUITAR LA IMAGEN PINCHAMOS ESTA VEZ EN EL DIV QUE APARECE
+document.getElementById('espec3').addEventListener('click', function() {
+    const imagenespeccazador = document.getElementById('espec3');
+    //APARECE LA IMAGEN DE ATAQUE.
+    imagenespeccazador.style.display = 'none';
+})
+
+document.getElementById('imagen_druida').addEventListener('click', function() {
+    //CREAMOS LA CONSTANTE DE EL GUERRERO
+    const imagenespecdruida = document.getElementById('espec4');
+    //APARECE LA IMAGEN COMPLETA DEL GUERRERO.
+    imagenespecdruida.style.display = 'flex';
+});
+// PARA QUITAR LA IMAGEN PINCHAMOS ESTA VEZ EN EL DIV QUE APARECE
+document.getElementById('espec4').addEventListener('click', function() {
+    const imagenespecdruida = document.getElementById('espec4');
+    //APARECE LA IMAGEN DE ATAQUE.
+    imagenespecdruida.style.display = 'none';
 })
