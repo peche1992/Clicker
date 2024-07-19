@@ -303,3 +303,16 @@ document.getElementById('espec4').addEventListener('click', function() {
     //APARECE LA IMAGEN DE ATAQUE.
     imagenespecdruida.style.display = 'none';
 })
+
+document.getElementById('imagen_paladin').addEventListener('click', function() {
+    //CREAMOS LA CONSTANTE DE EL GUERRERO
+    const imagenespecpaladin = document.getElementById('espec2');
+    //APARECE LA IMAGEN COMPLETA DEL GUERRERO.
+    imagenespecpaladin.style.display = 'flex';
+});
+// PARA QUITAR LA IMAGEN PINCHAMOS ESTA VEZ EN EL DIV QUE APARECE
+document.getElementById('espec2').addEventListener('click', function() {
+    const imagenespecpaladin = document.getElementById('espec2');
+    //APARECE LA IMAGEN DE ATAQUE.
+    imagenespecpaladin.style.display = 'none';
+})
