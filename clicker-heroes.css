@@ -117,3 +117,10 @@ text-align: right;
     background-repeat: no-repeat;
     background-position: center;
 }
+
+#imagen_cuerpo_paladin{
+    background-image: url(Heroes/Paladin_cuerpo.png);
+    background-size:contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
