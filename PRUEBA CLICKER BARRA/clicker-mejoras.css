@@ -1,0 +1,153 @@
+#fondo-mejoras{
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 370px;
+    height: 687px;
+    border-radius: 5%;
+    z-index: 0;
+    position: absolute;
+    border: 5px solid brown;
+    background-image: url("biblioteca.jpg");
+    background-size: cover;
+}
+#cuadro-mejoras p{
+    color: #242424;
+}
+
+#cuadro-mejoras{
+    margin-top: 5%;
+    height: 80%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cuadro-mejora-ind{
+    height: 18%;
+    width: 90%;
+    margin-top: 2%;
+    border: solid 5% black;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+}
+
+.logo-mejoras{
+    width: 20%;
+    height: 50%;
+    background-color: red;
+    border: solid black 5px;
+    border-radius: 50%;
+}
+.texto-mejoras{
+    width: 60%;
+    height: 80%;
+    margin-left: 2%;
+    margin-right: 2%;
+    display: flex;
+    flex-direction: column;
+    border: solid grey 2px;
+    border-radius: 25%;
+    background-color: rgba(253, 189, 15, 0.278);
+}
+
+#logo-daño{
+    background-image: url("icono_daño.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#logo-dañocritico{
+    background-image: url("icono_daño_crit.png");
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#logo-probcrit{
+    background-image: url("icono_porc__crit.png");
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#logo-magia{
+    background-image: url("icono_daño_mag.png");
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#logo-cd{
+    background-image: url("icono_cd.png");
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.arriba-mejora{
+    width: 100%;
+    height: 50%;
+    display: flex;
+}
+
+.def-mejora{
+    height: 100%;
+    width: 60%;
+    font-family: fantasy;
+}
+
+.estado-actual-mejora{
+    height: 100%;
+    width: 40%;
+    text-align: center;
+    font-family: fantasy;
+    font-size: large;
+    margin: 0;
+    padding: 0%;
+}
+
+.estado-actual-mejora p{
+    margin-top: 18%;
+}
+
+.abajo-mejora{
+    width: 100%;
+    height: 50%;
+    display: flex;
+}
+.coste{
+    height: 100%;
+    width: 60%;
+    font-family: fantasy;
+}
+
+.precio-actual-mejora{
+    height: 100%;
+    width: 40%;
+    text-align: center;
+    font-family: fantasy;
+    font-size: large;
+    margin: 0;
+    padding: 0%;
+}
+
+.precio-actual-mejora p{
+    margin-top: 18%;
+}
+.precio-mejoras{
+    width: 20%;
+    height: 50%;
+    border-radius: 50%;
+    text-align: center;
+    background-image: url("moneda.png");
+    background-size:cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+
+
