@@ -10,6 +10,6 @@
     z-index: 0;
     position: absolute;
     border: 5px solid brown;
-    background-image: url("fondo-clasificacion.jpg");
+    background-image: url("Fondos/fondo-clasificacion.jpg");
     background-size: cover;
 }

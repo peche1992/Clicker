@@ -1,3 +1,36 @@
+//!FUNCION PARA CARGAR PARTIDA.
+let cargar_partida = function (nombre){
+    player_lista=localStorage.getItem(nombre);
+    player_objeto = JSON.parse(player_lista);
+    player=player_objeto;
+}
+
+
+
+let player = {
+    nombre: "",
+    progresion: {
+        etapa: 1,
+        contadormuertos:0,
+        contadormuertosboss:0
+        },
+    
+    economia:{
+        oro:1,
+        gemas:0
+        },
+
+    caracteristicas:{
+        daño: 1
+        //AQUI AÑADIREMOS OTRAS CARACTERISTICAS COMO PROB CRITICO O DAÑO CRITICO.
+    }
+    
+}
+player.nombre = prompt("¿Cual es tu nombre aventurero?");
+
+if (localStorage.getItem(player.nombre)){cargar_partida(player.nombre)};
+
+
 // LO QUE SE ME HA OCURRIDO PARA AUDIO SEMIAUTOMATICO.
 const cualquierlugar = document.getElementsByTagName("body")
 const audiohome = document.getElementById('audiohome');
@@ -103,16 +136,12 @@ const anchovida = 60;
 let saludinicial = 10;
 let saludqueda = 10;
 
-let contadormuertos=0;
-let contadormuertosboss=0;
+let multOro =1
 
-let daño= 1;
 
-let puntuacion_oro=1;
-document.querySelector(".oro-texto").innerText =puntuacion_oro;
+document.querySelector(".oro-texto").innerText =player.economia.oro;
 
-// let puntuacion = parseInt(document.querySelector(".oro-texto").innerText,10);
-let multPuntuacion = parseInt(document.querySelector(".mult-puntos-texto").innerText,10);
+// let Oro = parseInt(document.querySelector(".oro-texto").innerText,10);
 
 const slimes= ["Monstruos/slimes/0 (1).png","Monstruos/slimes/0 (2).png","Monstruos/slimes/0 (3).png",
                "Monstruos/slimes/0 (4).png","Monstruos/slimes/0 (5).png","Monstruos/slimes/0 (6).png",
@@ -139,9 +168,9 @@ boss.addEventListener("click",function(){
 
     //BAJAR LA BARRA DE VIDA.
     let barra=document.getElementById("salud");
-    barrainicial -= (daño*anchovida)/vidainicial;
+    barrainicial -= (player.caracteristicas.daño*anchovida)/vidainicial;
     barra.style.width= barrainicial+"%";
-    saludqueda-=daño;
+    saludqueda-=player.caracteristicas.daño;
     //BAJAR PUNTOS DE VIDA
     document.getElementById("salud-tiene-texto").textContent=saludqueda.toFixed(2);
     document.getElementById("salud-total-texto").textContent=saludinicial.toFixed(2);
@@ -153,7 +182,7 @@ boss.addEventListener("click",function(){
 //* FUNCION DE DAÑO CONTINO, DEBE SER COMO LA DE HACER CLICK.
 function dañocontinuo(damage){
     let barra=document.getElementById("salud");
-    damage = daño*0.1
+    damage = player.caracteristicas.daño*0.1
     barrainicial -= (damage*anchovida)/vidainicial;
     barra.style.width= barrainicial+"%";
     saludqueda-=damage;
@@ -167,7 +196,7 @@ function dañocontinuo(damage){
 //* CONDICIONES CUANDO MUERE EL BOSS.
 //? AQUI VOY A IR DEJANDO LAS FUNCIONES
 const dañocontinuorep = setInterval(function() {
-    dañocontinuo(daño);}, 500);
+    dañocontinuo(player.caracteristicas.daño);}, 500);
 
 function muerteboss(){ 
 
@@ -183,38 +212,39 @@ function muerteboss(){
             }
 
                 //!BOSS ESPECIAL 10
-                    if (boss10aparecer===false && contadormuertos === 9){
+                    if (boss10aparecer===false && player.progresion.etapa === 9){
                         boss.src = bossesEspeciales[0];
                         let boss1grito =  document.getElementById("gritoboss1");
                         boss1grito.play();
                         boss10aparecer =true;}
 
-                    if (boss10aparecer===true && saludqueda<=0 && contadormuertos===10){
-                        contadormuertosboss+=1;
+                    if (boss10aparecer===true && saludqueda<=0 && player.progresion.etapa===10){
+                        player.progresion.contadormuertosboss+=1;
                         boss10ejecutado = true;
                         boss10aparecer = false;
                         alert("Enhorabuena, has matado al elemental de sombra."); 
-                        puntuacion_oro+=10;
-                        multPuntuacion = multPuntuacion*10;
+                        multOro = multOro*10;
                     }  
            
             barrainicial=60;
             saludinicial+=1;
             vidainicial+=1;
             saludqueda=saludinicial;
-            contadormuertos+=1;
+            player.progresion.contadormuertos+=1;
+            player.progresion.etapa+=1;
+
 
         
-            // AGREGAR LA PUNTUACION POR CADA BOSS.
-            puntuacion_oro += 1;    
+            // AGREGAR LA Oro POR CADA BOSS.
+            player.economia.oro += 1*multOro;    
             
 
             //TENGO QUE ACTUALIZAR TODOS LOS TEXTOS TANTO EN EL BOSS COMO EN MEJORAS. ESTE ES EN EL BOSS
-            document.querySelector(".mult-daño-texto").innerText=daño;
-            document.querySelector(".oro-texto").innerText =puntuacion_oro;
-            document.querySelector(".mult-puntos-texto").innerText =multPuntuacion;
+            document.querySelector(".mult-daño-texto").innerText=player.caracteristicas.daño;
+            document.querySelector(".oro-texto").innerText =player.economia.oro;
+            document.querySelector(".mult-puntos-texto").innerText =player.progresion.etapa;
 
-            textdaño_oro.innerText = puntuacion_oro;
+            textdaño_oro.innerText = player.economia.oro;
 
         } }
 
@@ -243,22 +273,22 @@ document.getElementById('boss').addEventListener('click', function() {
 //!A PARTIR DE AQUI VOY A HACER LAS FUNCIONES DE LA PANTALLA DE MEJORAS
 comprardaño.addEventListener("click",function(){
 
-    if (daño<=10 && puntuacion_oro>0){
-        puntuacion_oro-=1
-        daño+=1;
+    if (player.caracteristicas.daño<=10 && player.economia.oro>0){
+        player.economia.oro-=1
+        player.caracteristicas.daño+=1;
         }
     
-    else if(daño>=10 && puntuacion_oro>=10){
-        puntuacion_oro-=10
-        daño+=1;
+    else if(player.caracteristicas.daño>=10 && player.economia.oro>=10){
+        player.economia.oro-=10
+        player.caracteristicas.daño+=1;
         }
         
 //AQUI TENEMOS DOS EJEMPLOS DE COMO HACER UNA ENTRADA DE TEXTO EN HTML
 
         document.querySelector(".mult-daño-texto").innerText=daño;
-        document.querySelector(".oro-texto").innerText =puntuacion_oro;
-        textdaño_oro.innerText = puntuacion_oro;
-        textdaño.innerText = daño;
+        document.querySelector(".oro-texto").innerText =player.economia.oro;
+        textdaño_oro.innerText = player.economia.oro;
+        textdaño.innerText = player.caracteristicas.daño;
 
 
 })
@@ -316,3 +346,12 @@ document.getElementById('espec2').addEventListener('click', function() {
     //APARECE LA IMAGEN DE ATAQUE.
     imagenespecpaladin.style.display = 'none';
 })
+
+//! FUNCION PARA GUARDAR LA PARTIDA.
+document.getElementById('salvar-partida').addEventListener('click', function() {
+    //GENERAMOS UNA LISTA CON EL OBJETO DESEADO
+    player_lista = JSON.stringify(player);
+    //GUARDAMOS EN NUESTRO LOCAL STORE.º    
+    localStorage.setItem(player.nombre,player_lista)
+});
+

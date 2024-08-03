@@ -4,7 +4,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url("fondobody.jpg");
+    background-image: url("Fondos/fondobody.jpg");
     background-size: cover;
     background-position: center;
     position: relative;
@@ -18,7 +18,7 @@ body{
     align-items: center;
     width: 370px;
     height: 687px;
-    background-image: url("fondo-boss.gif");
+    background-image: url("Fondos/fondo-boss.gif");
     background-size: cover;
     background-position: center;
     border-radius: 5%;

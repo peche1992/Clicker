@@ -10,7 +10,7 @@
     z-index: 0;
     position: absolute;
     border: 5px solid brown;
-    background-image: url("biblioteca.jpg");
+    background-image: url("Fondos/biblioteca.jpg");
     background-size: cover;
 }
 #cuadro-mejoras p{
